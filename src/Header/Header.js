@@ -36,9 +36,9 @@ class Header extends React.Component {
         console.log(this.state);
         swal("Task Added Successfully !");
         this.setState({
-            task:'',
-            dueDate:'',
-            category:''
+            task: '',
+            dueDate: '',
+            category: ''
         })
         // axios.post("http://localhost:4070/app/task",this.state)
         // .then(response=>{
@@ -49,38 +49,40 @@ class Header extends React.Component {
         // })
 
     }
-changeHandler=(e)=>{
-    this.setState({[e.target.name]:e.target.value})
-}
-submitHandler=e=>{
-    e.preventDefault();
-    console.log(this.state);
-    axios.post("http://localhost:4070/app/task",this.state)
-    .then(response=>{
-        console.log(response);
-    })
-    .catch(err=>{
-        console.log(err);
-    })
-   
-}
-componentDidMount(){
-    axios.get("http://localhost:4070/app/task")
-    .then(response=>{
-        console.log("response from get api",response);
-    })
-    .catch(err=>{
-        console.log(err);
-    })
-}
+    changeHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    submitHandler = e => {
+        e.preventDefault();
+        console.log(this.state);
+        axios.post("http://localhost:4070/app/task", this.state)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
+    componentDidMount() {
+        axios.get("http://localhost:4070/app/task")
+            .then(response => {
+                console.log("response from get api", response);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     render() {
         const { show, task, category, dueDate } = this.state;
         return (
             <>
                 <div className="header">
-                <span style={{ fontFamily: "Times New Roman", marginLeft :"170px"}}>Task Manager</span>
-          <Button type="button" className="addtask" onClick={this.handleShow} >+ Add Task</Button>
+                    <span style={{ fontFamily: "Times New Roman", marginLeft: "170px" }}>Task Manager</span>
+                    
+                    <Button type="button" className="addtask" onClick={this.handleShow} >+ Add Task</Button>
+                   
                     <Modal show={show} onHide={this.handleClose}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add Title</Modal.Title>
@@ -104,14 +106,17 @@ componentDidMount(){
                             </Modal.Footer>
                         </form>
                     </Modal>
+                   
                     <div className="container-fluid back">
+                    <span class="badge badge-pill badge-dark">Categories</span>
                         <div className="row">
+                       
                             <div className="col-md-4 first">
                                 <h3>Urgent</h3>
                                 <div className="card">
                                     <div className="card-body">
-                                   
-                                    <h5 className="card-title">Task To be Done</h5>
+
+                                        <h5 className="card-title">Task To be Done</h5>
                                         <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
                                     </div>
                                 </div>
