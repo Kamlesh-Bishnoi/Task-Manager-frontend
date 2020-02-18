@@ -80,9 +80,9 @@ class Header extends React.Component {
             <>
                 <div className="header">
                     <span style={{ fontFamily: "Times New Roman", marginLeft: "170px" }}>Task Manager</span>
-                    
+
                     <Button type="button" className="addtask" onClick={this.handleShow} >+ Add Task</Button>
-                   
+
                     <Modal show={show} onHide={this.handleClose}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add Title</Modal.Title>
@@ -106,22 +106,22 @@ class Header extends React.Component {
                             </Modal.Footer>
                         </form>
                     </Modal>
-                   
+
                     <div className="container-fluid back">
-                    <span class="badge badge-pill badge-dark">Categories</span>
+                        <span class="badge badge-pill badge-light">Categories</span>
                         <div className="row">
-                       
                             <div className="col-md-4 first">
-                                <h3>Urgent</h3>
+                                <h3 >Urgent</h3>
                                 <div className="card">
                                     <div className="card-body">
-
                                         <h5 className="card-title">Task To be Done</h5>
                                         <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
                                     </div>
                                 </div>
+                                <div>
+                                </div>
                             </div>
-                            <div className="col-md-4 second">
+                            <div className="col-md-4 first">
                                 <h3>Important</h3>
                                 <div className="card">
                                     <div className="card-body">
@@ -130,8 +130,40 @@ class Header extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-4 third">
+                            <div className="col-md-4 first">
                                 <h3>Others</h3>
+                                <div className="card" >
+                                    <div className="card-body">
+                                        <h5 className="card-title">Task To be Done</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <hr></hr>
+                        <div className="row">
+                            <div className="col-md-4 first">
+                               
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Task To be Done</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
+                                    </div>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                            <div className="col-md-4 first">
+                                
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Task To be Done</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-4 first">
+                                
                                 <div className="card" >
                                     <div className="card-body">
                                         <h5 className="card-title">Task To be Done</h5>
