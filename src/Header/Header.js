@@ -80,14 +80,6 @@ componentDidMount(){
                             </Button>
                         </Modal.Footer>
                         </form>
-                        {/* <Modal.Footer>
-                            <Button variant="secondary" onClick={this.handleClose}>
-                                Close
-                            </Button>
-                            <Button variant="primary" onClick={this.handleClose} type="submit">
-                                Submit
-                            </Button>
-                        </Modal.Footer> */}
                     </Modal>
                 </div>
             </>
