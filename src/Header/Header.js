@@ -1,10 +1,7 @@
 import React from "react";
 import "./Header.css";
-import ReactDOM from "react-dom";
 import { Button, Modal } from "react-bootstrap";
-import { Dropdown, MenuItem, DropdownButton } from "react-bootstrap";
 import axios from 'axios';
-
 
 class Header extends React.Component {
     constructor() {
@@ -44,6 +41,15 @@ submitHandler=e=>{
     })
    
 }
+componentDidMount(){
+    axios.get("http://localhost:4070/app/task")
+    .then(response=>{
+        console.log("response from get api",response);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
 
     render() {
         const { show,task,category,dueDate } = this.state;
@@ -58,7 +64,7 @@ submitHandler=e=>{
                         </Modal.Header>
                         <form onSubmit={this.submitHandler}>
                         <Modal.Body>Task <input class="form-control" type="text" placeholder="Enter the Task" name="task" value={task} onChange={this.changeHandler} ></input></Modal.Body>
-                        <Modal.Body>Due Date  <input class="form-control" type="datetime-local" id="birthdaytime" name="dueDate" value={dueDate} onChange={this.changeHandler}></input></Modal.Body>
+                        <Modal.Body>Due Date  <input class="form-control" type="date"  name="dueDate" value={dueDate} onChange={this.changeHandler}></input></Modal.Body>
                         <Modal.Body>Category<select id="inputState" class="form-control" name="category" value={category} onChange={this.changeHandler}>
                             <option selected>Choose...</option>
                             <option>Urgent</option>
