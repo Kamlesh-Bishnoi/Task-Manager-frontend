@@ -3,6 +3,7 @@ import "./Header.css";
 import ReactDOM from "react-dom";
 import { Button, Modal } from "react-bootstrap";
 import { Dropdown, MenuItem, DropdownButton } from "react-bootstrap";
+import axios from 'axios';
 
 
 class Header extends React.Component {
@@ -10,7 +11,10 @@ class Header extends React.Component {
         super();
         this.state = {
             show: false,
-            setShow: false
+            setShow: false,
+            task:"",
+            category:"",
+            dueDate:''
         }
     }
     handleShow = () => {
@@ -25,10 +29,24 @@ class Header extends React.Component {
             setShow: false
         })
     }
-
+changeHandler=(e)=>{
+    this.setState({[e.target.name]:e.target.value})
+}
+submitHandler=e=>{
+    e.preventDefault();
+    console.log(this.state);
+    axios.post("http://localhost:4070/app/task",this.state)
+    .then(response=>{
+        console.log(response);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+   
+}
 
     render() {
-        const { show } = this.state;
+        const { show,task,category,dueDate } = this.state;
         return (
             <>
                 <div className="header">
@@ -38,22 +56,32 @@ class Header extends React.Component {
                         <Modal.Header closeButton>
                             <Modal.Title>Add Title</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>Task <input class="form-control" type="text" placeholder="Enter the Task" ></input></Modal.Body>
-                        <Modal.Body>Due Date  <input class="form-control" type="datetime-local" id="birthdaytime" name="birthdaytime"></input></Modal.Body>
-                        <Modal.Body>Category<select id="inputState" class="form-control">
+                        <form onSubmit={this.submitHandler}>
+                        <Modal.Body>Task <input class="form-control" type="text" placeholder="Enter the Task" name="task" value={task} onChange={this.changeHandler} ></input></Modal.Body>
+                        <Modal.Body>Due Date  <input class="form-control" type="datetime-local" id="birthdaytime" name="dueDate" value={dueDate} onChange={this.changeHandler}></input></Modal.Body>
+                        <Modal.Body>Category<select id="inputState" class="form-control" name="category" value={category} onChange={this.changeHandler}>
                             <option selected>Choose...</option>
                             <option>Urgent</option>
                             <option>Important</option>
                             <option>Others</option>
-                        </select></Modal.Body>
+                        </select> </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={this.handleClose}>
                                 Close
                             </Button>
-                            <Button variant="primary" onClick={this.handleClose}>
+                            <Button variant="primary" onClick={this.handleClose} type="submit">
                                 Submit
                             </Button>
                         </Modal.Footer>
+                        </form>
+                        {/* <Modal.Footer>
+                            <Button variant="secondary" onClick={this.handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="primary" onClick={this.handleClose} type="submit">
+                                Submit
+                            </Button>
+                        </Modal.Footer> */}
                     </Modal>
                 </div>
             </>
