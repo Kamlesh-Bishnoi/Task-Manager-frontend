@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Button, Modal } from "react-bootstrap";
 import swal from 'sweetalert';
+import axios from 'axios';
 
 class Header extends React.Component {
     constructor() {
@@ -26,6 +27,7 @@ class Header extends React.Component {
             setShow: false
         })
     }
+
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -47,6 +49,30 @@ class Header extends React.Component {
         // })
 
     }
+changeHandler=(e)=>{
+    this.setState({[e.target.name]:e.target.value})
+}
+submitHandler=e=>{
+    e.preventDefault();
+    console.log(this.state);
+    axios.post("http://localhost:4070/app/task",this.state)
+    .then(response=>{
+        console.log(response);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+   
+}
+componentDidMount(){
+    axios.get("http://localhost:4070/app/task")
+    .then(response=>{
+        console.log("response from get api",response);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
 
     render() {
         const { show, task, category, dueDate } = this.state;
