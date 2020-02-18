@@ -12,7 +12,8 @@ class Header extends React.Component {
             setShow: false,
             task: "",
             category: "",
-            dueDate: " "
+            dueDate: " ",
+            detail:[]
         }
     }
     handleShow = () => {
@@ -39,21 +40,24 @@ class Header extends React.Component {
             task: '',
             dueDate: '',
             category: ''
+          
         })
-        // axios.post("http://localhost:4070/app/task",this.state)
-        // .then(response=>{
-        //     console.log(response);
-        // })
-        // .catch(err=>{
-        //     console.log(err);
-        // })
+        axios.post("http://localhost:4070/app/task",this.state)
+        .then(response=>{
+            console.log(response);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
 
     }
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
     submitHandler = e => {
-        e.preventDefault();
+       
+        this.getdetail();
+        // e.preventDefault();
         console.log(this.state);
         axios.post("http://localhost:4070/app/task", this.state)
             .then(response => {
@@ -62,20 +66,39 @@ class Header extends React.Component {
             .catch(err => {
                 console.log(err);
             })
-
+          
     }
-    componentDidMount() {
-        axios.get("http://localhost:4070/app/task")
+    getdetail(){
+           axios.get("http://localhost:4070/app/task")
             .then(response => {
+                console.log("response.data.data", response.data.data);
+                this.setState({
+                    detail:response.data.data
+                })
                 console.log("response from get api", response);
             })
             .catch(err => {
                 console.log(err);
             })
     }
-
+    componentDidMount() {
+        this.getdetail();
+        // axios.get("http://localhost:4070/app/task")
+        //     .then(response => {
+        //         console.log("response.data.data", response.data.data);
+        //         this.setState({
+        //             detail:response.data.data
+        //         })
+        //         console.log("response from get api", response);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
+    }
+       
     render() {
-        const { show, task, category, dueDate } = this.state;
+        console.log("detatatat",this.state.detail);
+        const { show, task, category, dueDate,detail } = this.state;
         return (
             <>
                 <div className="header">
@@ -109,35 +132,46 @@ class Header extends React.Component {
                     <div className="container-fluid back">
                     <span class="badge badge-pill badge-dark">Categories</span>
                         <div className="row">
-                       
                             <div className="col-md-4 first">
-                                <h3>Urgent</h3>
-                                <div className="card">
-                                    <div className="card-body">
+                                      <h3>Urgent</h3>
+                                      {detail.filter(item=>item.category==="Urgent").map(item=>(
+                                      <div className="card">
+                                          <div className="card-body">
+                                              <h5 className="card-title">{item.task}</h5>
+                                              <h6 className="card-subtitle mb-2 text-muted">{item.dueDate}</h6>
+                                          </div>
+                                      </div>
+                                      
+                                ))}
+                            </div>
+                            <div className="col-md-4 first">
+                               
+                                
+                                      <h3>Important</h3>
 
-                                        <h5 className="card-title">Task To be Done</h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
-                                    </div>
-                                </div>
+                                      {detail.filter(item=>item.category==="Important").map(item=>(
+                                      <div className="card">
+                                          <div className="card-body">
+                                              <h5 className="card-title">{item.task}</h5>
+                                              <h6 className="card-subtitle mb-2 text-muted">{item.dueDate}</h6>
+                                          </div>
+                                      </div>
+                                ))}
                             </div>
-                            <div className="col-md-4 second">
-                                <h3>Important</h3>
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">Task To be Done</h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4 third">
-                                <h3>Others</h3>
-                                <div className="card" >
-                                    <div className="card-body">
-                                        <h5 className="card-title">Task To be Done</h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">Due Date</h6>
-                                    </div>
-                                </div>
-                            </div>
+                            <div className="col-md-4 first">
+                               
+                                
+                               <h3>Others</h3>
+
+                               {detail.filter(item=>item.category==="Others").map(item=>(
+                               <div className="card">
+                                   <div className="card-body">
+                                       <h5 className="card-title">{item.task}</h5>
+                                       <h6 className="card-subtitle mb-2 text-muted">{item.dueDate}</h6>
+                                   </div>
+                               </div>
+                         ))}
+                     </div>
                         </div>
                     </div>
                 </div>
