@@ -212,7 +212,7 @@ class Header extends React.Component {
                 onDrop={e => this.drop(e, "Urgent")}
                 onDragOver={this.allowdrop}
               >
-                {this.props.children}
+                {/* {this.props.children} */}
                 <h3>Urgent</h3>
                 {detail
                   .filter(item => item.category === "Urgent")
@@ -224,7 +224,7 @@ class Header extends React.Component {
                       onDragStart={e => this.drag(e, item)}
                       onDragOver={this.noAllowDrop}
                     >
-                      {this.props.children}
+                      {/* {this.props.children} */}
                       <div className="card-body">
                         <h5 className="card-title">{item.task}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">
@@ -244,7 +244,7 @@ class Header extends React.Component {
                 onDrop={e => this.drop(e, "Important")}
                 onDragOver={this.allowdrop}
               >
-                {this.props.children}
+                {/* {this.props.children} */}
                 <h3>Important</h3>
                 {detail
                   .filter(item => item.category === "Important")
@@ -276,7 +276,7 @@ class Header extends React.Component {
                 onDrop={e => this.drop(e, "Others")}
                 onDragOver={this.allowdrop}
               >
-                {this.props.children}
+                {/* {this.props.children} */}
                 <h3>Others</h3>
                 {detail
                   .filter(item => item.category === "Others")
@@ -309,8 +309,8 @@ class Header extends React.Component {
     );
   }
 }
-Header.proTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node
-};
+// Header.proTypes = {
+//   id: PropTypes.string,
+//   children: PropTypes.node
+// };
 export default Header;
