@@ -38,4 +38,15 @@
     text-align: left;
     font-style: italic;
   }
+  .remove
+  {
+    margin-left: 280px;
+    margin-top: 5px;
+   width: 110px;
+    border-radius: 20px;
+  }
+  .row
+  {
+    height: 100vh;
+  }
   
