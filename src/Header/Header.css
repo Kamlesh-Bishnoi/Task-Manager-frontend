@@ -16,7 +16,7 @@
   }
   .back
   {
-    background-color: rgb(245,107,38); 
+    background-image: linear-gradient(to bottom, rgb(245,107,38),  rgb(47,47,43));
     color: rgb(47,47,43) ;
     height: 100vh;
   }
@@ -27,5 +27,12 @@
      margin-top: 10px;
      border-radius: 5px;
      padding: 10px;
+  }
+  .createdate
+  {
+    font-size: 13px;
+    color: grey;
+    text-align: left;
+    font-style: italic;
   }
   

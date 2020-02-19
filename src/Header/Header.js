@@ -23,19 +23,22 @@ class Header extends React.Component {
         })
     }
     handleClose = () => {
+        swal("No Task Added !");  
         this.setState({
             show: false,
             setShow: false
         })
     }
+    
 
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
     submitHandler = e => {
+       
         e.preventDefault();
         console.log(this.state);
-        swal("Task Added Successfully !");
+        
         this.setState({
             task: '',
             dueDate: '',
@@ -55,7 +58,7 @@ class Header extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     submitHandler = e => {
-
+        
         this.getdetail();
         // e.preventDefault();
         console.log(this.state);
@@ -121,8 +124,8 @@ class Header extends React.Component {
                                 <Button variant="secondary" onClick={this.handleClose}>
                                     Close
                             </Button>
-                                <Button variant="primary" onClick={this.handleClose} type="submit">
-                                    Submit
+                                <Button variant="primary" type="submit">
+                                    Add
                             </Button>
                             </Modal.Footer>
                         </form>
@@ -138,34 +141,39 @@ class Header extends React.Component {
                                             <h5 className="card-title">{item.task}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">{item.dueDate}</h6>
                                         </div>
+                                        <span className="createdate">&nbsp;<i class="fa fa-clock-o"></i> &nbsp;Task Added on :{item.creationDate} </span>
                                     </div>
                                 ))}
                             </div>
                             <div className="col-md-4 first">
-                            <h3>Important</h3>
+                                <h3>Important</h3>
+
                                 {detail.filter(item => item.category === "Important").map(item => (
                                     <div className="card">
                                         <div className="card-body">
                                             <h5 className="card-title">{item.task}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">{item.dueDate}</h6>
-                                        </div>
+                                        </div><i class='far fa-clock'></i>
+                                        <span className="createdate">&nbsp;<i class="fa fa-clock-o"></i> &nbsp;Task Added on :{item.creationDate} </span>
                                     </div>
                                 ))}
                             </div>
                             <div className="col-md-4 first">
-                            <h3>Others</h3>
+                                <h3>Others</h3>
+                                
                                 {detail.filter(item => item.category === "Others").map(item => (
                                     <div className="card">
                                         <div className="card-body">
                                             <h5 className="card-title">{item.task}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">{item.dueDate}</h6>
                                         </div>
+                                        <span className="createdate">&nbsp;<i class="fa fa-clock-o"></i> &nbsp;Task Added on :{item.creationDate} </span>
                                     </div>
                                 ))}
                             </div>
                         </div>
                         <hr></hr>
-                
+
                     </div>
                 </div>
             </>
