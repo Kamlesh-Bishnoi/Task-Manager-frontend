@@ -1,10 +1,8 @@
-.header{
-    
+.header{ 
     color: BLACK;
     background-color:#F9B088;
     padding-top: 20px;
     text-align: center;
-
   }
  .card
  {
@@ -14,7 +12,7 @@
   {
     background-image: linear-gradient(to bottom,#de6262, #ffb88c);
     color: rgb(47,47,43) ;
-  
+    height: 100%;
   }
   h3
   {
@@ -24,7 +22,6 @@
      border-radius: 5px;
      padding: 10px;
   }
-  
   .createdate
   {
     font-size: 13px;
@@ -42,7 +39,6 @@
   }
  
   .addtask {
-    
     color: black;
     padding: 8px 10px;
     border-radius: 20px;

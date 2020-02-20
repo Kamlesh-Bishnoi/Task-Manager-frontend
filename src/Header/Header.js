@@ -209,9 +209,15 @@ class Header extends React.Component {
             </Modal.Footer>
           </form>
         </Modal>
-        <div className="container-fluid back">
-          <span className="badge badge-pill badge-light ">Categories</span>
-          <div className="row">
+        <div className="container-fluid">
+          <div class="row">
+            <div className="col-md-12">
+            <span className="badge badge-pill badge-light ">Categories</span>
+            </div>
+         
+          </div>
+         
+          <div className="row back">
             <div
               className="col-md-4 first"
               id="Urgent"
