@@ -14,14 +14,6 @@
     color: rgb(47,47,43) ;
     height: 100%;
   }
-  h3
-  {
-     color: BLACK;
-     background-color:rgb(249,176,136,0.5) ;
-     margin-top: 10px;
-     border-radius: 5px;
-     padding: 10px;
-  }
   .createdate
   {
     font-size: 13px;
@@ -29,18 +21,8 @@
     text-align: left;
     font-style: italic;
   }
-  .remove
-  {
-    float: right;
-    margin-left: 10px;
-    margin-top: 5px;
-   width: 110px;
-    border-radius: 20px;
-  }
- 
+
   .addtask {
-    color: black;
-    padding: 8px 10px;
     border-radius: 20px;
     margin-bottom: 20px;
     width: 150px;
@@ -61,4 +43,7 @@
     float: right;
     font-size: 30px;
     cursor: pointer;
+}
+.first{
+  height: 100vh;
 }

@@ -3,7 +3,6 @@ import "./Header.css";
 import { Button, Modal } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
-import PropTypes from "prop-types";
 
 class Header extends React.Component {
   constructor() {
@@ -209,22 +208,22 @@ class Header extends React.Component {
             </Modal.Footer>
           </form>
         </Modal>
-        <div className="container-fluid">
+        <div className="container-fluid back">
           <div class="row">
             <div className="col-md-12">
-            <span className="badge badge-pill badge-light ">Categories</span>
+            <span class="badge badge-pill badge-light">Categories</span>
             </div>
-         
           </div>
-         
-          <div className="row back">
+          <hr />
+          <div className="container-fluid">
+          <div className="row">
             <div
               className="col-md-4 first"
               id="Urgent"
               onDrop={e => this.drop(e, "Urgent")}
               onDragOver={this.allowdrop}
             >
-              {this.props.children}
+            
               <h3>Urgent</h3>
               {detail
                 .filter(item => item.category === "Urgent")
@@ -237,10 +236,10 @@ class Header extends React.Component {
                     onDragOver={this.noAllowDrop}
                   >
                     <i
-                      class="fa fa-trash-o delete"
+                      class="fa fa-trash-o"
                       onClick={() => this.taskDelete(item._id)}
                     ></i>
-                    {this.props.children}
+                   
                     <div className="card-body" style={{ display: "contents" }}>
                       <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                       <h6 className="card-subtitle mb-2 text-muted">
@@ -260,7 +259,7 @@ class Header extends React.Component {
               onDrop={e => this.drop(e, "Important")}
               onDragOver={this.allowdrop}
             >
-              {this.props.children}
+              
               <h3>Important</h3>
               {detail
                 .filter(item => item.category === "Important")
@@ -296,7 +295,7 @@ class Header extends React.Component {
               onDrop={e => this.drop(e, "Others")}
               onDragOver={this.allowdrop}
             >
-              {this.props.children}
+             
               <h3>Others</h3>
               {detail
                 .filter(item => item.category === "Others")
@@ -335,13 +334,10 @@ class Header extends React.Component {
               <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Task
             </Button>
           </div>
+          </div>
         </div>
       </>
     );
   }
 }
-Header.proTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node
-};
 export default Header;
