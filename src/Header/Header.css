@@ -1,24 +1,22 @@
 .header{
-    height: 100px;
+    
     color: BLACK;
     background-color:#F9B088;
     padding-top: 20px;
-    font-size: 50px;
+    text-align: center;
 
   }
-  .addtask
-  {
-      float: right;
-      border-radius: 20px;
-      width: 150px;
-      margin-top: 10px;
-      margin-right: 20px;
+  
+  @media screen and (max-width: 769px) {
+    .addtask {
+      float: inherit;
+    }
   }
   .back
   {
     background-image: linear-gradient(to bottom,#de6262, #ffb88c);
     color: rgb(47,47,43) ;
-    height: 100vh;
+  
   }
   h3
   {
@@ -28,9 +26,7 @@
      border-radius: 5px;
      padding: 10px;
   }
-  .row{
-    height: 100vh;
-  }
+  
   .createdate
   {
     font-size: 13px;
@@ -40,7 +36,7 @@
   }
   .remove
   {
-    margin-left: 280px;
+    
     margin-top: 5px;
    width: 110px;
     border-radius: 20px;
@@ -48,5 +44,19 @@
   .row
   {
     height: 100vh;
+  }
+  .addtask {
+    background-color :#de6262;
+    color: black;
+    padding: 8px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 150px;
+  }
+  
+  .mybutton {
+    /* position: fixed; */
+    bottom: -4px;
+    right: 10px;
   }
   
