@@ -154,8 +154,8 @@ class Header extends React.Component {
     return (
       <>
         <div className="header">
-          <span style={{ fontFamily: "Times New Roman", fontSize: "60px" }}>
-            Task Manager
+          <span style={{ fontSize: "60px" }}>
+            <b> Task Manager</b>
           </span>
         </div>
         <Modal show={show} onHide={this.handleClose}>
@@ -230,18 +230,15 @@ class Header extends React.Component {
                     onDragStart={e => this.drag(e, item)}
                     onDragOver={this.noAllowDrop}
                   >
-                    <button
-                      type="button"
+                    <i
+                      class="fa fa-trash-o delete"
                       onClick={() => this.taskDelete(item._id)}
-                      class="btn btn-danger remove"
-                    >
-                      <i class="fa fa-trash-o"></i>&nbsp;Remove
-                    </button>
+                    ></i>
                     {this.props.children}
-                    <div className="card-body">
-                      <h5 className="card-title">{item.task}</h5>
+                    <div className="card-body" style={{ display: "contents" }}>
+                      <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                       <h6 className="card-subtitle mb-2 text-muted">
-                        {item.dueDate}
+                        Due Date :&nbsp; {item.dueDate}
                       </h6>
                     </div>
                     <span className="createdate">
@@ -269,17 +266,14 @@ class Header extends React.Component {
                     onDragStart={e => this.drag(e, item)}
                     onDragOver={this.noAllowDrop}
                   >
-                    <button
-                      type="button"
+                    <i
+                      class="fa fa-trash-o delete"
                       onClick={() => this.taskDelete(item._id)}
-                      class="btn btn-danger remove"
-                    >
-                      <i class="fa fa-trash-o"></i>&nbsp;Remove
-                    </button>
-                    <div className="card-body">
-                      <h5 className="card-title">{item.task}</h5>
+                    ></i>
+                    <div className="card-body" style={{ display: "contents" }}>
+                      <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                       <h6 className="card-subtitle mb-2 text-muted">
-                        {item.dueDate}
+                        Due Date :&nbsp; {item.dueDate}
                       </h6>
                     </div>
                     <i class="far fa-clock"></i>
@@ -308,17 +302,14 @@ class Header extends React.Component {
                     onDragStart={e => this.drag(e, item)}
                     onDragOver={this.noAllowDrop}
                   >
-                    <button
-                      type="button"
+                    <i
+                      class="fa fa-trash-o"
                       onClick={() => this.taskDelete(item._id)}
-                      class="btn btn-danger remove"
-                    >
-                      <i class="fa fa-trash-o"></i>&nbsp;Remove
-                    </button>
-                    <div className="card-body">
-                      <h5 className="card-title">{item.task}</h5>
+                    ></i>
+                    <div className="card-body" style={{ display: "contents" }}>
+                      <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                       <h6 className="card-subtitle mb-2 text-muted">
-                        {item.dueDate}
+                        Due Date :&nbsp; {item.dueDate}
                       </h6>
                     </div>
                     <span className="createdate">
