@@ -133,7 +133,7 @@ class Header extends React.Component {
     const { show, task, category, dueDate, detail } = this.state;
     return (
       <>
-        <div className="container-fluid">
+        <div className="container-fluid ">
           <div className="row header">
             <div className="col-md-12 ">
               <span style={{ fontSize: "60px" }}>
