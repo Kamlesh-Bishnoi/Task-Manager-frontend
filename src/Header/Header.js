@@ -222,7 +222,7 @@ class Header extends React.Component {
                         </form>
                     </Modal>
                     <div className="container-fluid back">
-                        <span class="badge badge-pill badge-light">Categories</span>
+                        <span className="badge badge-pill badge-light">Categories</span>
                         <div className="row">
                             <div
                                 className="col-md-4 first"
@@ -285,7 +285,7 @@ class Header extends React.Component {
                                             </div>
                                             <i class="far fa-clock"></i>
                                             <span className="createdate">
-                                                &nbsp;<i class="fa fa-clock-o"></i> &nbsp;Task Added on
+                                                &nbsp;<i className="fa fa-clock-o"></i> &nbsp;Task Added on
                         :{item.creationDate}{" "}
                                             </span>
                                         </div>

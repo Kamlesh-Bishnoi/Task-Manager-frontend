@@ -1,7 +1,7 @@
 .header{
     height: 100px;
-    color: rgb(245,107,38);
-    background-color: rgb(47,47,43);
+    color: BLACK;
+    background-color:#F9B088;
     padding-top: 20px;
     font-size: 50px;
 
@@ -16,14 +16,14 @@
   }
   .back
   {
-    background-image: linear-gradient(to bottom, rgb(245,107,38),  rgb(47,47,43));
+    background-image: linear-gradient(to bottom,#de6262, #ffb88c);
     color: rgb(47,47,43) ;
     height: 100vh;
   }
   h3
   {
-     color: rgb(245,107,38);
-     background-color:rgb(47,47,43) ;
+     color: BLACK;
+     background-color:rgb(249,176,136,0.5) ;
      margin-top: 10px;
      border-radius: 5px;
      padding: 10px;
