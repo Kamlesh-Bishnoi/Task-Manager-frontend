@@ -7,145 +7,145 @@ import PropTypes from "prop-types";
 
 class Header extends React.Component {
     constructor() {
-      super();
-      this.state = {
-        show: false,
-        setShow: false,
-        task: "",
-        category: "",
-        dueDate: " ",
-        detail: [],
-        drop: {}
-      };
+        super();
+        this.state = {
+            show: false,
+            setShow: false,
+            task: "",
+            category: "",
+            dueDate: " ",
+            detail: [],
+            drop: {}
+        };
     }
     componentDidMount() {
-      this.getdetail();
+        this.getdetail();
     }
     getdetail() {
-      axios
-        .get("http://localhost:4070/app/task")
-        .then(response => {
-          // console.log("response.data.data", response.data.data);
-          this.setState({
-            detail: response.data.data
-          });
-          // console.log("response from get api", response);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        axios
+            .get("http://localhost:4070/app/task")
+            .then(response => {
+                // console.log("response.data.data", response.data.data);
+                this.setState({
+                    detail: response.data.data
+                });
+                // console.log("response from get api", response);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
     updatetask(_id, category) {
-      axios
-        .post("http://localhost:4070/app/task/update", { _id, category })
-        .then(response => {
-          // console.log("response.data.data", response.data.data);
-          // console.log("response from get api", response);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-      // window.location.reload(false);
+        axios
+            .post("http://localhost:4070/app/task/update", { _id, category })
+            .then(response => {
+                // console.log("response.data.data", response.data.data);
+                // console.log("response from get api", response);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        // window.location.reload(false);
     }
     handleShow = () => {
-      this.setState({
-        setShow: true,
-        show: true
-      });
+        this.setState({
+            setShow: true,
+            show: true
+        });
     };
     handleClose = (e = true) => {
-      if (e) swal("No Task Added !");
-      this.setState({
-        show: false,
-        setShow: false
-      });
+        if (e) swal("No Task Added !");
+        this.setState({
+            show: false,
+            setShow: false
+        });
     };
-  
+
     changeHandler = e => {
-      this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
     };
     submitHandler = e => {
-      this.getdetail();
-      this.updatetask();
-      e.preventDefault();
-      console.log(this.state);
-      axios
-        .post("http://localhost:4070/app/task", this.state)
-        .then(response => {
-          console.log(response);
-          this.setState({
-            detail: [...this.state.detail, response.data]
-          });
-          this.handleClose(false);
-          console.log("detatatttatatilsss", this.state.detail);
-        })
-        .catch(err => {
-          console.log(err);
+        this.getdetail();
+        this.updatetask();
+        e.preventDefault();
+        console.log(this.state);
+        axios
+            .post("http://localhost:4070/app/task", this.state)
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    detail: [...this.state.detail, response.data]
+                });
+                this.handleClose(false);
+                console.log("detatatttatatilsss", this.state.detail);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        this.setState({
+            task: "",
+            dueDate: "",
+            category: ""
         });
-      this.setState({
-        task: "",
-        dueDate: "",
-        category: ""
-      });
     };
     // changeHandler = e => {
     //   this.setState({ [e.target.name]: e.target.value });
     // };
-  
+
     drag = (e, item) => {
-      console.log("draggg", e, item);
-      this.setState({
-        drop: item
-      });
+        console.log("draggg", e, item);
+        this.setState({
+            drop: item
+        });
     };
     noAllowDrop = e => {
-      console.log("noAllowDrop", e);
-      // e.stopPropagation();
+        console.log("noAllowDrop", e);
+        // e.stopPropagation();
     };
     drop = (e, category) => {
-      this.state.detail.forEach(item => {
-        if (item._id === this.state.drop._id) {
-          item.category = category;
-        }
-        e.preventDefault();
-      });
-      this.setState({
-        detail: this.state.detail
-      });
-      this.updatetask(this.state.drop._id, category);
-      // console.log("detail", this.state.detail);
+        this.state.detail.forEach(item => {
+            if (item._id === this.state.drop._id) {
+                item.category = category;
+            }
+            e.preventDefault();
+        });
+        this.setState({
+            detail: this.state.detail
+        });
+        this.updatetask(this.state.drop._id, category);
+        // console.log("detail", this.state.detail);
     };
     allowdrop = e => {
-      // console.log("AllowDrop", e);
-      e.preventDefault();
+        // console.log("AllowDrop", e);
+        e.preventDefault();
     };
 
     taskDelete = (e) => {
-      swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this data !",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-      })
-          .then((willDelete) => {
-              if (willDelete) {
-                  swal("Task Removed Successfully!", {
-                      icon: "success",
-                  });
-              } else {
-                  swal("Your task is safe!");
-              }
-          });
-  }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this data !",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Task Removed Successfully!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your task is safe!");
+                }
+            });
+    }
     render() {
         console.log("detatatat", this.state.detail);
         const { show, task, category, dueDate, detail } = this.state;
         return (
             <>
                 <div className="header">
-                    <span style={{ fontFamily: "Times New Roman", fontSize: "60px" }}>
-                        Task Manager
+                    <span style={{ fontSize: "60px" }}>
+                        <b>  Task Manager</b>
                     </span>
                 </div>
                 <Modal show={show} onHide={this.handleClose}>
@@ -215,18 +215,19 @@ class Header extends React.Component {
                                 .map(item => (
                                     <div
                                         className="card"
+
                                         id={item._id}
                                         draggable="true"
                                         onDragStart={e => this.drag(e, item)}
                                         onDragOver={this.noAllowDrop}
                                     >
-                                        <button type="button" onClick={this.taskDelete} class="btn btn-danger remove"><i class="fa fa-trash-o"></i>&nbsp;Remove</button>
+                                        <i class="fa fa-trash-o delete" onClick={this.taskDelete}></i>
                                         {this.props.children}
-                                        <div className="card-body">
+                                        <div className="card-body" style={{ display: "contents" }}>
 
-                                            <h5 className="card-title">{item.task}</h5>
+                                            <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">
-                                                {item.dueDate}
+                                                Due Date :&nbsp;  {item.dueDate}
                                             </h6>
                                         </div>
                                         <span className="createdate">
@@ -254,11 +255,12 @@ class Header extends React.Component {
                                         onDragStart={e => this.drag(e, item)}
                                         onDragOver={this.noAllowDrop}
                                     >
-                                        <button type="button" onClick={this.taskDelete} class="btn btn-danger remove"><i class="fa fa-trash-o"></i>&nbsp;Remove</button>
-                                        <div className="card-body">
-                                            <h5 className="card-title">{item.task}</h5>
+
+                                        <i class="fa fa-trash-o delete" onClick={this.taskDelete}></i>
+                                        <div className="card-body" style={{ display: "contents" }}>
+                                            <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">
-                                                {item.dueDate}
+                                            Due Date :&nbsp;  {item.dueDate}
                                             </h6>
                                         </div>
                                         <i class="far fa-clock"></i>
@@ -287,11 +289,11 @@ class Header extends React.Component {
                                         onDragStart={e => this.drag(e, item)}
                                         onDragOver={this.noAllowDrop}
                                     >
-                                        <button type="button" onClick={this.taskDelete} class="btn btn-danger remove"><i class="fa fa-trash-o"></i>&nbsp;Remove</button>
-                                        <div className="card-body">
-                                            <h5 className="card-title">{item.task}</h5>
+                                        <i class="fa fa-trash-o" onClick={this.taskDelete}></i>
+                                        <div className="card-body" style={{ display: "contents" }}>
+                                            <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">
-                                                {item.dueDate}
+                                            Due Date :&nbsp;   {item.dueDate}
                                             </h6>
                                         </div>
                                         <span className="createdate">
@@ -304,7 +306,7 @@ class Header extends React.Component {
 
                         <hr></hr>
                         <Button type="button" className="addtask mybutton" onClick={this.handleShow} >
-                        <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Task
+                            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Task
                         </Button>
                     </div>
                 </div>

@@ -6,7 +6,10 @@
     text-align: center;
 
   }
- 
+ .card
+ {
+   margin-bottom: 8px;
+ }
   .back
   {
     background-image: linear-gradient(to bottom,#de6262, #ffb88c);
@@ -37,12 +40,9 @@
    width: 110px;
     border-radius: 20px;
   }
-  .row
-  {
-    height: 100vh;
-  }
+ 
   .addtask {
-    background-color :#de6262;
+    
     color: black;
     padding: 8px 10px;
     border-radius: 20px;
@@ -60,3 +60,9 @@
     font-size: 30px;
     margin-top: 10px;
   }
+  .fa-trash-o:before {
+    content: "\f014";
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
