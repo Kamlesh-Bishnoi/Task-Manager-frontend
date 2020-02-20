@@ -163,20 +163,11 @@ class Header extends React.Component {
         const { show, task, category, dueDate, detail } = this.state;
         return (
             <>
-                
-                    {/* <Button className="addtask" onClick={this.handleShow} id="mybutton">
-                        &nbsp;&nbsp;Add Task</Button> */}
-             
                 <div className="header">
-
                     <span style={{ fontFamily: "Times New Roman", fontSize: "60px" }}>
                         Task Manager
-                                </span>
-                    <Button type="button" className="addtask mybutton" onClick={this.handleShow} >
-                        + Add Task
-          </Button>
+                    </span>
                 </div>
-
                 <Modal show={show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Add Title</Modal.Title>
@@ -229,7 +220,7 @@ class Header extends React.Component {
                     </form>
                 </Modal>
                 <div className="container-fluid back">
-                    <span className="badge badge-pill badge-light">Categories</span>
+                    <span className="badge badge-pill badge-light ">Categories</span>
                     <div className="row">
                         <div
                             className="col-md-4 first"
@@ -332,6 +323,9 @@ class Header extends React.Component {
                         </div>
 
                         <hr></hr>
+                        <Button type="button" className="addtask mybutton" onClick={this.handleShow} >
+                        <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Task
+                        </Button>
                     </div>
                 </div>
             </>
