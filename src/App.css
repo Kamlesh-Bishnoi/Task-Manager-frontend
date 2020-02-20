@@ -2,8 +2,9 @@
   text-align: center;
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
-  
+
+  background-image: linear-gradient(to bottom,#de6262, #ffb88c);
+
 }
 
 
