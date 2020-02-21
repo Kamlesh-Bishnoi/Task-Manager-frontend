@@ -85,7 +85,7 @@ class Header extends React.Component {
       drop: item
     });
   };
-  noAllowDrop = e => {};
+ 
   drop = (e, category) => {
     this.state.detail.forEach(item => {
       if (item._id === this.state.drop._id) {
@@ -218,7 +218,7 @@ class Header extends React.Component {
                     id={item._id}
                     draggable="true"
                     onDragStart={e => this.drag(e, item)}
-                    onDragOver={this.noAllowDrop}
+                    
                   >
                     <i
                       className="fa fa-trash-o"
@@ -253,7 +253,7 @@ class Header extends React.Component {
                     id={item._id}
                     draggable="true"
                     onDragStart={e => this.drag(e, item)}
-                    onDragOver={this.noAllowDrop}
+                   
                   >
                     <i
                       className="fa fa-trash-o delete"
@@ -288,7 +288,7 @@ class Header extends React.Component {
                     id={item._id}
                     draggable="true"
                     onDragStart={e => this.drag(e, item)}
-                    onDragOver={this.noAllowDrop}
+                    
                   >
                     <i
                       className="fa fa-trash-o"
