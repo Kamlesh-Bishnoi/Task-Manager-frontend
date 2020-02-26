@@ -1,62 +1,74 @@
-.header{ 
-    color: BLACK;
-    background-color:#F9B088;
-    padding-top: 20px;
-    text-align: center;
-  }
-  h3{
-    color: black;
-    margin-top: 10px;border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(249,176,136,0.5);
-  }
-  .card
- {
-   margin-bottom: 8px;
- } 
-  .back
-  {
-    color: rgb(47,47,43) ;
-    height: 1;
-  }
-  .Categories{
-    background-color: #de6262;
-    padding-bottom: 7px;
-  }
-  .createdate
-  {
-    font-size: 13px;
-    color: grey;
-    text-align: left;
-    font-style: italic;
-  }
-
-  .addtask {
-    border-radius: 20px;
-    margin-bottom: 20px;
-    width: 150px;
-  }
-  
-  .mybutton {
-    position: fixed;
-    bottom: -4px;
-    right: 10px;
-  }
-  .badge
-  {
-    font-size: 30px;
-    margin-top: 10px;
-  }
-  .fa-trash-o:before {
-    content: "\f014";
-    float: right;
-    font-size: 30px;
-    cursor: pointer;
+.header {
+  color: BLACK;
+  background-color: #f9b088;
+  padding-top: 20px;
+  text-align: center;
 }
-/* .first
-{
+h3 {
+  color: black;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(249, 176, 136, 0.5);
+}
+.card {
+  margin-bottom: 8px;
+}
+.back {
+  color: rgb(47, 47, 43);
+  height: 1;
+}
+.Categories {
+  background-color: #de6262;
+  padding-bottom: 7px;
+}
+.createdate {
+  font-size: 13px;
+  color: grey;
+  text-align: left;
+  font-style: italic;
+}
+
+.addtask {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  /* width: 0px */
+}
+
+.fa-plus {
+  position: relative;
+  right: -2px;
+}
+
+.mybutton {
+  position: fixed;
+  bottom: 20px;
+  right: 18px;
+  opacity: 0.8;
+}
+.badge {
+  font-size: 30px;
+  margin-top: 10px;
+}
+.fa-trash-o:before {
+  content: "\f014";
+  float: right;
+  font-size: 30px;
+  cursor: pointer;
+}
+.first {
   height: 100vh;
-} */
-.container-fluid{
+}
+.container-fluid {
   min-height: 670px;
+}
+h3:hover {
+  background-color: rgb(71, 147, 247);
+  color: white;
+  letter-spacing: 3px;
+  transition: all 0.4s ease 0s;
+}
+.card:hover {
+  background-color: bisque;
+  border-color: black;
 }

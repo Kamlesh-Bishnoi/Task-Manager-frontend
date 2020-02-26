@@ -32,9 +32,19 @@ class Header extends React.Component {
         console.log(err);
       });
   }
-  updatetask(_id, category) {
+  updatetask(_id, category, detail = null) {
+    let body = { _id, category };
+    if (detail)
+      body.SnoChange = detail
+        .filter(item => item.category === category)
+        .map(item => {
+          return {
+            _id: item._id,
+            Sno: item.Sno
+          };
+        });
     axios
-      .post("http://localhost:4070/app/task/update", { _id, category })
+      .post("http://localhost:4070/app/task/update", body)
       .then(response => {})
       .catch(err => {
         console.log(err);
@@ -85,18 +95,39 @@ class Header extends React.Component {
       drop: item
     });
   };
- 
-  drop = (e, category) => {
+
+  drop = (e, category, Sno, item) => {
     this.state.detail.forEach(item => {
       if (item._id === this.state.drop._id) {
         item.category = category;
       }
+
+      if (
+        Sno &&
+        Object.keys(this.state.drop).length &&
+        this.state.drop.Sno === item.Sno
+      ) {
+        item.Sno = 0;
+      }
+
       e.preventDefault();
     });
-    this.setState({
-      detail: this.state.detail
+    this.state.detail.forEach(item => {
+      if (Sno && item.Sno !== 0 && item.Sno >= Sno) {
+        item.Sno += 1;
+      }
     });
-    this.updatetask(this.state.drop._id, category);
+    let NewT = this.state.detail.find(item => item.Sno === 0);
+    if (NewT) {
+      NewT.Sno = Sno;
+    }
+    this.setState({
+      detail: this.state.detail.sort((a, b) => {
+        return a.Sno - b.Sno;
+      })
+    });
+    this.updatetask(this.state.drop._id, category, this.state.detail);
+    e.stopPropagation();
   };
   allowdrop = e => {
     e.preventDefault();
@@ -131,6 +162,7 @@ class Header extends React.Component {
   };
   render() {
     const { show, task, category, dueDate, detail } = this.state;
+    console.log("detail", detail);
     return (
       <>
         <div className="container-fluid ">
@@ -217,14 +249,13 @@ class Header extends React.Component {
                     className="card"
                     id={item._id}
                     draggable="true"
+                    onDrop={e => this.drop(e, "Urgent", item.Sno, item)}
                     onDragStart={e => this.drag(e, item)}
-                    
                   >
                     <i
                       className="fa fa-trash-o"
                       onClick={() => this.taskDelete(item._id)}
                     ></i>
-
                     <div className="card-body" style={{ display: "contents" }}>
                       <h5 className="card-title">Task :&nbsp;{item.task}</h5>
                       <h6 className="card-subtitle mb-2 text-muted">
@@ -252,8 +283,8 @@ class Header extends React.Component {
                     className="card"
                     id={item._id}
                     draggable="true"
+                    onDrop={e => this.drop(e, "Important", item.Sno, item)}
                     onDragStart={e => this.drag(e, item)}
-                   
                   >
                     <i
                       className="fa fa-trash-o delete"
@@ -287,8 +318,8 @@ class Header extends React.Component {
                     className="card"
                     id={item._id}
                     draggable="true"
+                    onDrop={e => this.drop(e, "Others", item.Sno, item)}
                     onDragStart={e => this.drag(e, item)}
-                    
                   >
                     <i
                       className="fa fa-trash-o"
@@ -314,7 +345,7 @@ class Header extends React.Component {
               className="addtask mybutton"
               onClick={this.handleShow}
             >
-              <i className="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Task
+              <i className="fa fa-plus" aria-hidden="true"></i>&nbsp;
             </Button>
           </div>
         </div>
