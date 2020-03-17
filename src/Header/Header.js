@@ -60,7 +60,13 @@ class Header extends React.Component {
     if (e) swal("No Task Added !");
     this.setState({
       show: false,
-      setShow: false
+      setShow: false,
+      task: "",
+      category: "",
+      dueDate: " "
+
+      
+      
     });
   };
 
